@@ -90,6 +90,7 @@ function putInActiveState(sections, inputSection) {
 // No code copying was done
 function isInViewport(el) {
     const rect = el.getBoundingClientRect();
+    // Making ternary operator in this situation will be complex so, i've used the normal if syntax.
     if (rect.top >= 0 &&
         rect.left >= 0 &&
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
@@ -102,8 +103,8 @@ function isInViewport(el) {
 
 
 // For Loop to add sections as many as needed 
-// In this example I only added 1 more setion using 5 < 6 the only loop to enter
-// Change the 6 to any other number to add more sections
+// In this example I only added 1 more setion using 5 < 6 the only 1 loop to enter
+// Change "6" to any other number to add more sections
 for (let index = 5; index < 6; index++) {
     addSection(`Section ${index}`);
 }
@@ -149,6 +150,7 @@ document.addEventListener("scroll", function () {
         }
     }
 });
+// Making the go to top button functionality
 document.getElementById('myBtn').addEventListener('click', function () {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
