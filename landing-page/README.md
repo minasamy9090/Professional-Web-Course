@@ -6,12 +6,12 @@ HTML page linked with css file to style it and javascript file to make it dynami
 
 ## Contents
 
--> css
----> style.css
--> js
----> app.js
--> index.html
--> README.md
+**css.**
+style.css.
+**js.**
+app.js.
+**index.html.**
+**README.md.**
 
 ## Development
 
