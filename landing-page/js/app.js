@@ -1,3 +1,6 @@
+// Getting the start time to calculate performance
+const startingTime = performance.now();
+
 // Initializing variable to the ul element in the html
 const navBarList = document.getElementById('navbar__list');
 // making an array carrying all buttons in the navBar
@@ -50,6 +53,8 @@ function updateNavBar() {
     sectionsData = [];
     // Getting sections into array List
     let sections = document.getElementsByTagName('section');
+    // Making customDiv to increase performance.
+    const docFragment = document.createDocumentFragment();
     // Initializing variable to the ul element in the html
     for (let section of sections) {
         // Creating buttons to append in the ul element in the html
@@ -61,8 +66,9 @@ function updateNavBar() {
         buttons.push(item);
         // Appending the button to the ul element in the html
         li.appendChild(item);
-        navBarList.appendChild(li);
+        docFragment.appendChild(li);
     };
+    navBarList.appendChild(docFragment);
 };
 // Making a button to be highlighted
 function changeColorOfButton(inputButton) {
@@ -155,3 +161,6 @@ document.getElementById('myBtn').addEventListener('click', function () {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 });
+
+const endingTime = performance.now();
+console.log('This code took ' + (endingTime - startingTime) + ' milliseconds.');
