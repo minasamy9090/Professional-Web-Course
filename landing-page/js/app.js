@@ -53,8 +53,7 @@ function updateNavBar() {
     sectionsData = [];
     // Getting sections into array List
     let sections = document.getElementsByTagName('section');
-    // Making customDiv to increase performance.
-    const docFragment = document.createDocumentFragment();
+
     // Initializing variable to the ul element in the html
     for (let section of sections) {
         // Creating buttons to append in the ul element in the html
@@ -63,20 +62,23 @@ function updateNavBar() {
         // Editing the button text
         item.textContent = section.getAttribute('data-nav');
         sectionsData.push(section);
+        item.addEventListener("click", () => {
+            section.scrollIntoView({ behavior: "smooth" });
+        });
         buttons.push(item);
         // Appending the button to the ul element in the html
         li.appendChild(item);
-        docFragment.appendChild(li);
+        navBarList.appendChild(li);
     };
-    navBarList.appendChild(docFragment);
+
 };
 // Making a button to be highlighted
 function changeColorOfButton(inputButton) {
     for (let button of buttons) {
         if (button === inputButton) {
-            button.style.color = "blue";
+            button.classList.add("activeButton");
         } else {
-            button.style.color = "black";
+            button.classList.remove("activeButton");
         }
     }
 };
@@ -86,27 +88,17 @@ function putInActiveState(sections, inputSection) {
         if (section == inputSection) {
             section.classList.add('your-active-class');
         } else {
-            section.classList.remove('your-active-class');
+            section.classList.remove('your-active-class')
+        }
+        for (let button of buttons) {
+            if (button.textContent === inputSection.getAttribute('data-nav')) {
+                button.classList.add("activeButton");
+            } else {
+                button.classList.remove("activeButton");
+            }
         }
     }
 };
-
-// reference :: https://www.javascripttutorial.net/dom/css/check-if-an-element-is-visible-in-the-viewport/
-// Whole doc is read and understood well
-// No code copying was done
-function isInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    // Making ternary operator in this situation will be complex so, i've used the normal if syntax.
-    if (rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
 
 // For Loop to add sections as many as needed 
 // In this example I only added 1 more setion using 5 < 6 the only 1 loop to enter
@@ -117,42 +109,12 @@ for (let index = 5; index < 6; index++) {
 
 
 ////*****  EVENTS  *****////
-
-// Adding just ONE single event in the navBar instead of adding to all buttons ~event delegation~
-navBarList.addEventListener("click", function (event) {
-    // Checking if the clicked element is button
-    if (event.target.type === "submit") {
-        // looping through all sections to get the needed section
-        for (const assocSection of sectionsData) {
-            // After finding the needed Section we scroll into it and put it in the active state
-            if (event.target.innerHTML == assocSection.getAttribute('data-nav')) {
-                assocSection.scrollIntoView(true);
-                putInActiveState(sectionsData, assocSection);
-            }
-        }
-    }
-});
-
-
-// Adding scrolling event to take care of the scrolling to items without clicking buttons
-document.addEventListener("scroll", function () {
-    // looping through sections
-    for (let section of sectionsData) {
-        // Checking which section is in the view
-        if (isInViewport(section)) {
-            // After finding which section is on the view we put it in the active state
-            // and change its associated button to be focused.
+// Checking for inView sections
+document.addEventListener('scroll', function () {
+    for (section of sectionsData) {
+        let rect = section.getBoundingClientRect();
+        if (rect.top <= 150 && rect.bottom >= 150) {
             putInActiveState(sectionsData, section);
-            for (let button of buttons) {
-                if (button.textContent == section.getAttribute('data-nav')) {
-                    changeColorOfButton(button);
-                }
-                if (section.getAttribute('data-nav') === "Section 5") {
-                    document.getElementById('myBtn').style.display = "Block";
-                } else {
-                    document.getElementById('myBtn').style.display = "none";
-                }
-            }
         }
     }
 });

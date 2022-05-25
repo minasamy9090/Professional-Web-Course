@@ -8,7 +8,6 @@
  *
 */
 
-
 /* ---- Base Rules ---- */
 body {
     background: rgb(136,203,171);
@@ -120,7 +119,11 @@ section {
     .landing__container {
         max-width: 50em;
         padding: 4em;
-    }
+    }li {
+        font-size: 10px;
+        margin-right: 8px;
+        margin-top: 5px;
+      }
 }
 
 section:nth-of-type(even) .landing__container {
@@ -230,9 +233,7 @@ button{
     border-radius: 10px;
     cursor: pointer;
 }
-button:hover{
-    background-color: darkgrey;
-}
+
 html {
     scroll-behavior: smooth;
   }
@@ -245,4 +246,9 @@ html {
     z-index: 99;
     color: blue;
     padding: 15px;
+  }
+
+  .activeButton{
+    color :blue;
+    
   }
