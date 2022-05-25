@@ -1,0 +1,392 @@
+For Loop -->
+    for (var i = 0; i < 10; i++) {
+        console.log(i);
+    }
+
+    RETURNS TRUE::
+            "1" == 1
+            0 == false
+            ' ' == false
+    
+Therefore, a ' ', false, and 0 are all considered equal. Similarly, a '1' and 1 are also considered equal.
+If we don't want to convert the operands, before comparison, we have to use a strict comparison ===
+
+To print out the account balance with decimal points (i.e. 325.00), use the .toFixed() method and pass it the number of decimal points you want to use. 
+For example, balance.toFixed(2) returns 325.00.
+
+Here’s the list of all of the falsy values:
+        the Boolean value false
+        the null type
+        the undefined type
+        the number 0
+        the empty string ""
+        the odd value NaN (stands for "not a number", check out the NaN MDN article)
+
+Here are some other examples of truthy values:
+        true
+        42
+        "pizza"
+        "0"
+        "null"
+        "undefined"
+        {}
+        []
+
+The ternary operator provides you with a shortcut alternative for writing lengthy if...else statements.
+--> conditional ? (if condition is true) : (if condition is false)
+
+
+var option = 3;
+
+switch (option) {
+  case 1:
+    console.log("You selected option 1.");
+    break;
+  case 2:
+    console.log("You selected option 2.");
+    break;
+  case 3:
+    console.log("You selected option 3.");
+    break;
+  case 4:
+    console.log("You selected option 4.");
+    break;
+  case 5:
+    console.log("You selected option 5.");
+    break;
+  case 6:
+    console.log("You selected option 6.");
+    break; // technically, not needed
+}
+
+To print out the average salary with commas (i.e. 59,124), use the toLocaleString() method and pass it the locale "en-US".
+For example, salary.toLocaleString("en-US").
+
+
+There are three ways to declare a variable:
+    let - It a new way to declare a variable in any scope - Global, Local, or Block. The value of this variable can be changed or reassigned anytime within its scope.
+    const - It is also a way to declare constants in any scope - Global, Local, or Block. Once you are assigned a value to a const variable, the value of this variable CANNOT be changed or reassigned throughout the code.
+    var - This is the old way of declaring variables in only two scope - Global, or Local. Variables declared with the var keyword can not have Block Scope. The value of this variable can be changed or reassigned anytime within its scope.
+  
+
+** Global identifiers are a bad idea. They can lead to bad variable names, conflicting variable names, and messy code.
+** variable declarations get hoisted, but variable assignments stay put.
+** JavaScript hoists function declarations and variable declarations to the top of the current scope.
+** Variable assignments are not hoisted.
+
+// creates a `mixedData` array with mixed data types
+var mixedData = ["abcd", 1, true, undefined, null, "all the things"];
+
+// creates a `arraysInArrays` array with three arrays
+var arraysInArrays = [[1, 2, 3], ["Julia", "James"], [true, false, true, false]];
+
+var donuts = ["glazed", "chocolate frosted", "Boston creme", "glazed cruller"];
+donuts.splice(1, 1, "chocolate cruller", "creme de leche"); // removes "chocolate frosted" at index 1 and adds "chocolate cruller" and "creme de leche" starting at index 1
+Returns: ["chocolate frosted"]
+donuts array after calling the splice() method: ["glazed", "chocolate cruller", "creme de leche", "Boston creme", "glazed cruller"]
+
+Following is the syntax of splice() method: arrayName.splice(arg1, arg2, item1, ....., itemX); where,
+  arg1 = Mandatory argument. Specifies the starting index position to add/remove items. You can use a negative value to specify the position from the end of the array e.g., -1 specifies the last element.
+  arg2 = Optional argument. Specifies the count of elements to be removed. If set to 0, no items will be removed.
+  item1, ....., itemX are the items to be added at index position arg1
+  splice() method returns the item(s) that were removed.
+-->
+  words = ["cat", "in", "hat"];
+  words.forEach(function(word, num, all) {
+    console.log("Word " + num + " in " + all.toString() + " is " + word);
+  });
+  Prints:
+  Word 0 in cat,in,hat is cat
+  Word 1 in cat,in,hat is in
+  Word 2 in cat,in,hat is hat
+
+var myObj = { 
+  color: "orange",
+  shape: "sphere",
+  type: "food",
+  eat: function() { return "yummy" }
+};
+
+all variables declared with var are "hoisted", which means they're raised to the top of the function scope. 
+ 
+If a variable is declared using let or const inside a block of code (denoted by curly braces { }), then the variable is stuck in what is known as the temporal dead zone until the variable’s declaration is processed. 
+
+let message = `${student.name} please see ${teacher.name} in ${teacher.room} to pick up your report card.`;
+
+--> Destructuring values from an array
+      const point = [10, 25, -34];
+
+      const [x, y, z] = point;
+
+      console.log(x, y, z);
+
+const [one, , , two, , , , three] = things; --> ignore things while destructuring
+
+for (let i = 0; i < digits.length; i++) {
+  console.log(digits[i]);
+}
+
+for (const index in digits) {
+  console.log(digits[index]);
+}
+
+for (const digit of digits) {
+  console.log(digit);
+}
+
+for (const day of days) {
+  var upperDay = day.charAt(0).toUpperCase() + day.slice(1);
+  console.log(upperDay);
+}
+
+const books = ["Don Quixote", "The Hobbit", "Alice in Wonderland", "Tale of Two Cities"];
+console.log(...books);
+  Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Cities
+
+REST Param.
+-->
+    const order = [20.17, 18.67, 1.50, "cheese", "eggs", "milk", "bread"];
+    const [total, subtotal, tax, ...items] = order;
+    console.log(total, subtotal, tax, items);
+  Prints: 20.17 18.67 1.5 ["cheese", "eggs", "milk", "bread"]
+
+  Variadic functions are functions that take an indefinite number of arguments.
+
+  function sum(...nums) {
+  let total = 0;  
+  for(const num of nums) {
+    total += num;
+  }
+  return total;
+}
+
+
+// select the element with the ID "callout"
+document.getElementById('callout');
+// select all elements that have the class "accent-color"
+document.getElementsByClassName('accent-color');
+// select all "span" elements
+document.getElementsByTagName('span');
+-----> **** the list that's returned is not an array
+
+Node (with a capital "N"!) is a blueprint that contains information about all of the properties and methods for real nodes (with a lowercase "n"!). If you're not used to them, the words "interface", "property", and "method" can be kind of cryptic at first. Just remember that:
+    interface = blueprint
+    properties = data
+    methods = functionality
+
+// find and return the element with an ID of "header"
+document.querySelector('#header');
+
+// find and return the first element with the class "header"
+document.querySelector('.header');
+
+// find and return the first <header> element
+document.querySelector('header');
+⚠️ .querySelector() Returns A Single Element ⚠️
+
+// find and return a list of elements with the class "header"
+document.querySelectorAll('.header');
+
+// find and return a list of <header> elements
+document.querySelectorAll('header');
+
+Write the .querySelectorAll() code to find all paragraph elements that are descendents of elements that have the class: articles
+        document.querySelectorAll('.articles p');
+
+// creates and returns a <span> element
+document.createElement('span');
+
+// creates and returns an <h3> element
+document.createElement('h3');
+
+// create a brand new <span> element
+const newSpan = document.createElement('span');
+
+// select the first (main) heading of the page
+const mainHeading = document.querySelector('h1');
+
+// add the <span> element as the last child element of the main heading
+mainHeading.appendChild(newSpan);
+
+const myPara = document.createElement('p');
+const textOfParagraph = document.createTextNode('I am the text for the paragraph!');
+
+myPara.appendChild(textOfParagraph);
+document.body.appendChild(myPara);
+
+.insertAdjacentHTML()
+      <!-- beforebegin -->
+      <p>
+          <!-- afterbegin -->
+          Existing text/HTML content
+          <!-- beforeend -->
+      </p>
+      <!-- afterend -->
+
+edit multiple elements at once -->
+
+    const mainHeading = document.querySelector('h1');
+    mainHeading.style.cssText = 'color: blue; background-color: orange; font-size: 3.5em';
+
+
+const mainHeading = document.querySelector('h1');
+
+// add an ID to the heading's sibling element
+mainHeading.nextElementSibling.setAttribute('id', 'heading-sibling');
+
+// use the newly added ID to access that element
+document.querySelector('#heading-sibling').style.backgroundColor = 'red';
+
+
+// start displaying all events on the document object
+monitorEvents(document);
+
+// turn off the displaying of all events on the document object.
+unmonitorEvents(document);
+
+<event-target>.addEventListener(<event-to-listen-for>, <function-to-run-when-an-event-happens>);
+
+const mainHeading = document.querySelector('h1');
+
+mainHeading.addEventListener('click', function () {
+  console.log('The heading was clicked!');
+});
+
+https://developer.mozilla.org/en-US/docs/Web/Events
+
+<event-target>.removeEventListener(<event-to-listen-for>, <function-to-remove>);
+    function myEventListeningFunction() {
+        console.log('howdy');
+    }
+
+    // adds a listener for clicks, to run the `myEventListeningFunction` function
+    document.addEventListener('click', myEventListeningFunction);
+
+    // immediately removes the click listener that should run the `myEventListeningFunction` function
+    document.removeEventListener('click', myEventListeningFunction);
+------------------------------
+      // adds a listener for clicks, to run the `myEventListeningFunction` function
+      document.addEventListener('click', function myEventListeningFunction() {
+          console.log('howdy');
+      });
+
+      // immediately removes the click listener that should run the `myEventListeningFunction` function
+      document.removeEventListener('click', function myEventListeningFunction() {
+          console.log('howdy');
+      });
+
+      .addEventListener() and .removeEventListener have their own distinct listener functions...they do not refer to the exact same function (this is the reason the event listener removal fails!)
+
+el.addEventListener('keypress', function (event) {
+    console.log(event);
+});
+
+thirdLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    console.log("Look, ma! We didn't navigate to a new page!");
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+          document.querySelector('footer').style.backgroundColor = 'purple';
+      });
+
+--------------------PERFORMANCE :
+
+const fragment = document.createDocumentFragment();  // ← uses a DocumentFragment instead of a <div>
+
+for (let i = 0; i < 200; i++) {
+    const newElement = document.createElement('p');
+    newElement.innerText = 'This is paragraph number ' + i;
+
+    fragment.appendChild(newElement);
+}
+
+document.body.appendChild(fragment); // reflow and repaint here -- once!
+
+Reflow is the process of calculating the dimensions and position of page elements. This is a computationally intensive (slow) tasks. Repaint is the process of drawing the pixels to the screen. This is faster than reflow, but is still not a fast process. You want to make sure that your code causes the fewest number of reflows as possible.
+
+
+
+
+-------------------NODE & EXPRESS -----------------------
+
+// Express to run server and routes
+const express = require('express');
+
+// Start up an instance of app
+const app = express();
+
+/* Dependencies */
+const bodyParser = require('body-parser')
+/* Middleware*/
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// Cors for cross origin allowance
+const cors = require('cors');
+app.use(cors());
+
+
+const server = app.listen(port, ()=>{console.log(`running on localhost: ${port}`)})
+
+// Include a folder
+app.use(express.static('website'));
+
+Server-side: It refers to operations performed by the server in a network. In web development, we used the Server-side scripting technique to employ scripts on a web server that produces a response for each user's request.
+Client-side: It refers to operations performed at the client or user's end.
+Package: It is a file or directory defined by a package.json. The npm registry contains many packages which are node modules or include node modules.
+Module: Any file or directory in the node_modules directory that can be loaded by the Node.js require() function is known as a module.
+Arrow function: An arrow function is a compact alternative to a traditional function expression.
+
+var express = require('express');
+var app = express();
+
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', function (req, res) {
+  res.send('hello world');
+})
+
+An HTTP POST request sends data to the project's endpoint, where it is stored and can be accessed through a GET request
+
+
+
+
+const postData = async ( url = '', data = {})=>{
+    console.log(data);
+      const response = await fetch(url, {
+      method: 'POST', 
+      credentials: 'same-origin',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+     // Body data type must match "Content-Type" header        
+      body: JSON.stringify(data), 
+    });
+
+      try {
+        const newData = await response.json();
+        console.log(newData);
+        return newData;
+      }catch(error) {
+      console.log("error", error);
+      }
+  }
+
+postData('/add', {answer:42});
+
+------------------------ASYNC ----------------
+/*SYNC REVIEW*/
+
+setTimeout(function(){ console.log('third') }, 3000);
+
+function sync(){
+console.log('first')
+}
+
+sync()
+console.log('second')
+
+
+ //// first
+ //// second
+ //// third
